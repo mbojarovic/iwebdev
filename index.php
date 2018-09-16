@@ -1,6 +1,20 @@
 <?php
 
+session_start();
+
 require __DIR__ . '/App/autoload.php';
+
+if (!isset($_SESSION['lang'])) {
+    $_SESSION['lang'] = 'en';
+} elseif (isset($_GET['lang']) && $_SESSION['lang'] !=
+    $_GET['lang'] && !empty($_GET['lang'])) {
+
+    if ($_GET['lang'] == 'en') {
+        $_SESSION['lang'] = 'en';
+    } elseif ($_GET['lang'] == 'ru') {
+        $_SESSION['lang'] = 'ru';
+    }
+}
 
 $uri = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $uri);

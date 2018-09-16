@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <h1>Новости</h1>
+    <h1><?php echo $this->lang['articles'] ?></h1>
 
     <?php foreach ($this->articles as $article) : ?>
         <article>
@@ -22,8 +22,6 @@
                 </a>
             </h2>
             <p><?php echo $article->content; ?></p>
-        </article>
-
         <hr>
     <?php endforeach; ?>
 

@@ -8,12 +8,26 @@ abstract class Model
     public const TABLE = '';
 
     public $id;
-
     public static function findAll()
     {
         $db = new Db();
 
         $sql = 'SELECT * FROM ' . static::TABLE;
+        var_dump($sql);
+        return $db->query(
+            $sql,
+            [],
+            static::class
+        );
+    }
+
+    public static function findMultiAll()
+    {
+        $db = new Db();
+
+        $sql = 'SELECT title_' . $_SESSION['lang'] .  ' as title,
+        content_' . $_SESSION['lang'] . ' as content FROM '  . static::TABLE;
+        //var_dump($sql);
         return $db->query(
             $sql,
             [],

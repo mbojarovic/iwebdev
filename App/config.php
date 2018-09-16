@@ -3,8 +3,14 @@
 return [
     'db' => [
         'host' => 'localhost',
-        'dbname' => 'php',
+        'dbname' => 'iwebdev',
         'user' => 'root',
         'password' => ''
-    ]
+    ],
+    'lang' => [
+        'default' => 'en',
+
+        'english' => 'en',
+        'russian' => 'ru'
+        ]
 ];
