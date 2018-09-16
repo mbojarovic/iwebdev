@@ -9,7 +9,8 @@ class Article extends Controller
 
     protected function handle()
     {
-        $this->view->article = \App\Models\Article::findById($_GET['id']);
+        $this->view->langs = $this->lang;
+        $this->view->article = \App\Models\Article::findMultiById($_GET['id']);
         echo $this->view->render(__DIR__ . '/../../templates/article.php');
     }
 

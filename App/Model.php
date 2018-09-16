@@ -6,8 +6,8 @@ abstract class Model
 {
 
     public const TABLE = '';
-
     public $id;
+
     public static function findAll()
     {
         $db = new Db();
@@ -21,18 +21,31 @@ abstract class Model
         );
     }
 
-    public static function findMultiAll()
+    public static function findMultiAll($page)
     {
         $db = new Db();
-
-        $sql = 'SELECT title_' . $_SESSION['lang'] .  ' as title,
-        content_' . $_SESSION['lang'] . ' as content FROM '  . static::TABLE;
+        $sql = 'SELECT id, title_' . $_SESSION['lang'] .  ' as title,
+        content_' . $_SESSION['lang'] . ' as content FROM '  . static::TABLE . ' LIMIT ' . $page = 10;
         //var_dump($sql);
         return $db->query(
             $sql,
-            [],
+            [':page' => $page],
             static::class
         );
+    }
+
+    public static function findMultiById($id)
+    {
+        $db = new Db();
+
+        $sql = 'SELECT id, title_' . $_SESSION['lang'] .  ' as title,
+        content_' . $_SESSION['lang'] . ' as content FROM '  . static::TABLE . ' WHERE id=:id';
+        $data = $db->query(
+            $sql,
+            [':id' => $id],
+            static::class
+        );
+        return $data ? $data[0] : null;
     }
 
     public static function findById($id)

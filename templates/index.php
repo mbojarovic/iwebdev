@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <h1><?php echo $this->lang['articles'] ?></h1>
+    <h1><?php echo $this->langs['articles'] ?></h1>
 
     <?php foreach ($this->articles as $article) : ?>
         <article>

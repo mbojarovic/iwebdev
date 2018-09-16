@@ -12,13 +12,10 @@
 </head>
 <body>
 
-    <h1><?php echo $this->article->title; ?></h1>
-
+    <h1><?php echo $this->langs['article'] ?></h1>
     <article>
         <h2>
-            <a href="/article.php?id=<?php echo $this->article->id; ?>">
                 <?php echo $this->article->title; ?>
-            </a>
         </h2>
         <p><?php echo $this->article->content; ?></p>
     </article>

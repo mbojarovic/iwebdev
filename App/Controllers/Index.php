@@ -10,8 +10,8 @@ class Index extends Controller
 
     protected function handle()
     {
-        $this->view->lang = $this->lang;
-        $this->view->articles = Article::findMultiAll();
+        $this->view->langs = $this->lang;
+        $this->view->articles = Article::findMultiAll($_GET['page'] ?? null);
         echo $this->view->render(__DIR__ . '/../../templates/index.php');
     }
 
