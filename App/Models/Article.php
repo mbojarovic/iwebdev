@@ -8,10 +8,8 @@ class Article extends Model
 {
 
     public const TABLE = 'news';
+    public $title;
+    public $content;
 
-    public $title_en;
-    public $content_en;
-    public $content_ru;
-    public $title_ru;
 
 }
