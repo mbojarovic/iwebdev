@@ -16,10 +16,6 @@ if (!isset($_SESSION['lang'])) {
     }
 }
 
-if (isset($_GET['page'])) {
-    $page =  $_GET['page'];
-}
-
 $uri = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $uri);
 $ctrl = $parts[1] ? ucfirst($parts[1]) : 'Index';

@@ -21,15 +21,15 @@ abstract class Model
         );
     }
 
-    public static function findMultiAll($page)
+    public static function findMultiAll(int $offset, int $limit)
     {
         $db = new Db();
         $sql = 'SELECT id, title_' . $_SESSION['lang'] .  ' as title,
-        content_' . $_SESSION['lang'] . ' as content FROM '  . static::TABLE . ' LIMIT ' . $page = 10;
+        content_' . $_SESSION['lang'] . ' as content FROM '  . static::TABLE . ' LIMIT ' . $offset . ',' . $limit;
         //var_dump($sql);
         return $db->query(
             $sql,
-            [':page' => $page],
+            [':limit' => $limit, ':offset' => $offset],
             static::class
         );
     }
@@ -46,6 +46,13 @@ abstract class Model
             static::class
         );
         return $data ? $data[0] : null;
+    }
+
+    public static function countAll()
+    {
+        $db = new Db();
+        $sql = 'SELECT COUNT(*) AS num FROM ' . static::TABLE;
+        return (int)$db->query($sql, [], static::class)[0]->num;
     }
 
     public static function findById($id)

@@ -22,11 +22,13 @@ abstract class Controller
     {
         if ($this->access()) {
             $this->handle();
+            $this->pagination();
         } else {
             die('Нет доступа');
         }
     }
 
     abstract protected function handle();
+    abstract protected function pagination();
 
 }
