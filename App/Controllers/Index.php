@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controller;
 use App\Models\Article;
+use App\Classes\Pagination;
 
 class Index extends Controller
 {
@@ -12,27 +13,22 @@ class Index extends Controller
     {
         $this->view->langs = $this->lang;
 
+        $pagination = new Pagination();
+
         if(isset($_GET['page']))
         {
-
-            $offset = ($_GET['page'] - 1) * $_GET['page'];
-            var_dump($offset);
+            $pagination->starting_position = ($_GET['page'] -1) * $pagination->records_per_page;
         }
 
-        $this->view->articles = Article::findMultiAll($offset ?? 0, $_GET['page'] ?? 10);
+        $this->view->articles = Article::findMultiAll($pagination->starting_position, $pagination->records_per_page);
         echo $this->view->render(__DIR__ . '/../../templates/index.php');
-    }
 
-    protected function pagination()
-    {
-        if(isset($_GET['page']))
-        {
-            $cnt = Article::countAll();
-            echo $cnt;
+        $this->view->pagination = [
+            'total_no_of_records' => $pagination->total_no_of_records,
+            'records_per_page' => $pagination->records_per_page,
+            'path' => $pagination->path
+        ];
+        echo $this->view->render(__DIR__ . '/../../templates/pagination.php');
 
-            $starting_position = ($_GET['page'] - 1) * $records_per_page;
-        }
-        $query2=$query." limit $starting_position,$records_per_page";
-        return $query2;
     }
 }

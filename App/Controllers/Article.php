@@ -14,4 +14,8 @@ class Article extends Controller
         echo $this->view->render(__DIR__ . '/../../templates/article.php');
     }
 
+    protected function pagination()
+    {
+        return true;
+    }
 }
