@@ -15,8 +15,7 @@ class Index extends Controller
 
         $pagination = new Pagination();
 
-        if(isset($_GET['page']))
-        {
+        if(isset($_GET['page'])) {
             $pagination->starting_position = ($_GET['page'] -1) * $pagination->records_per_page;
         }
 
