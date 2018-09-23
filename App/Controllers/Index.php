@@ -11,7 +11,7 @@ class Index extends Controller
 
     protected function handle()
     {
-        $this->view->langs = $this->lang;
+        $this->view->langs = $this->langText;
 
         $pagination = new Pagination();
 
@@ -28,6 +28,10 @@ class Index extends Controller
             'path' => $pagination->path
         ];
         echo $this->view->render(__DIR__ . '/../../templates/pagination.php');
+    }
 
+    public function index()
+    {
+        echo 'this is index';
     }
 }

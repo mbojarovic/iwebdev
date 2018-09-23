@@ -1,31 +1,24 @@
 <?php
 
+use App\Classes\Languages;
+
 session_start();
 
 require __DIR__ . '/App/autoload.php';
 
-if (!isset($_SESSION['lang'])) {
-    $_SESSION['lang'] = 'en';
-} elseif (isset($_GET['lang']) && $_SESSION['lang'] !=
-    $_GET['lang'] && !empty($_GET['lang'])) {
-
-    if ($_GET['lang'] == 'en') {
-        $_SESSION['lang'] = 'en';
-    } elseif ($_GET['lang'] == 'ru') {
-        $_SESSION['lang'] = 'ru';
-    }
-}
-
 $uri = $_SERVER['REQUEST_URI'];
+//var_dump($uri);
 $parts = explode('/', $uri);
+
 $ctrl = $parts[1] ? ucfirst($parts[1]) : 'Index';
+//var_dump($ctrl);
 
 try {
-
     $class = '\App\Controllers\\' . $ctrl;
+    //var_dump($class);
     $ctrl = new $class;
     $ctrl();
-
+//\App\Controllers\Index::index();
 } catch (\App\DbException $error) {
     echo 'Ошибка в БД при выполнении запроса "' . $error->getQuery() . '": ' . $error->getMessage();
     die;
