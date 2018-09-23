@@ -2,14 +2,19 @@
 
 namespace App;
 
+use App\Classes\Languages;
+
 abstract class Controller
 {
     protected $view;
-    protected $lang;
+    protected $langText;
 
     public function __construct()
     {
-        $this->lang = include_once __DIR__ . '/../languages/' . $_SESSION['lang'] . '.php';
+        //var_dump($action);
+        Languages::multiLanguage();
+        $this->langText = include_once __DIR__ . '/../languages/' . $_SESSION['lang'] . '.php';
+
         $this->view = new View();
     }
 

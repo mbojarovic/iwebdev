@@ -9,7 +9,7 @@ class Pagination
 
     public $path = '/../../index/';
     public $starting_position = 0;
-    public $records_per_page = 2;
+    public $records_per_page = 1;
     public $total_no_of_records;
 
     public function __construct()

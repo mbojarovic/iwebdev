@@ -9,13 +9,8 @@ class Article extends Controller
 
     protected function handle()
     {
-        $this->view->langs = $this->lang;
+        $this->view->langs = $this->langText;
         $this->view->article = \App\Models\Article::findMultiById($_GET['id']);
         echo $this->view->render(__DIR__ . '/../../templates/article.php');
-    }
-
-    protected function pagination()
-    {
-        return true;
     }
 }
