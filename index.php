@@ -1,7 +1,5 @@
 <?php
 
-use App\Classes\Languages;
-
 session_start();
 
 require __DIR__ . '/App/autoload.php';
@@ -14,14 +12,14 @@ $parts[1] = $_SESSION['lang'] ?? null;
 
 
 $parts[2] = $parts[2] ?? null;
-$_SESSION['lang'];
+$lang = $_SESSION['lang'];
 var_dump($parts);
 $ctrl = $parts[2] ? ucfirst($parts[2]) : 'Index';
 
 if (file_exists(__DIR__ . '\App\Controllers\\' . $ctrl . '.' . 'php')) {
     try {
         $class = '\App\Controllers\\' . $ctrl;
-        $ctrl = new $class();
+        $ctrl = new $class($lang);
         $ctrl();
 
         //$action = $parts[2] ?? 'dsd';
