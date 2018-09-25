@@ -11,9 +11,6 @@ namespace App\Classes;
 
 abstract class Languages
 {
-    public static $en;
-    public static $ru;
-
     public static function multiLanguage()
     {
         if (!isset($_SESSION['lang'])) {

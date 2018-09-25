@@ -36,6 +36,4 @@ if (file_exists(__DIR__ . '\App\Controllers\\' . $ctrl . '.' . 'php')) {
             echo '<br>';
         }
     }
-} else {
-    echo 404;
 }

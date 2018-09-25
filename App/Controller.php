@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Classes\Languages;
-
 abstract class Controller
 {
     protected $view;
@@ -11,7 +9,6 @@ abstract class Controller
 
     public function __construct()
     {
-
         Languages::multiLanguage();
         $this->langText = include_once __DIR__ . '/../languages/' . $_SESSION['lang'] . '.php';
 
@@ -23,10 +20,6 @@ abstract class Controller
         return true;
     }
 
-    protected function showLanguage() {
-        return $this->lang;
-    }
-
     public function __invoke()
     {
         if ($this->access()) {
@@ -35,6 +28,5 @@ abstract class Controller
             die('Нет доступа');
         }
     }
-
     abstract protected function handle();
 }
