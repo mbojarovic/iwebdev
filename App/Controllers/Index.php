@@ -30,8 +30,8 @@ class Index extends Controller
         echo $this->view->render(__DIR__ . '/../../templates/pagination.php');
     }
 
-    public function index()
+    public function lang()
     {
-        echo 'this is index';
+        echo 'this is lang';
     }
 }

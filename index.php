@@ -10,7 +10,13 @@ $uri = $_SERVER['REQUEST_URI'];
 //var_dump($uri);
 $parts = explode('/', $uri);
 
-$ctrl = $parts[1] ? ucfirst($parts[1]) : 'Index';
+$parts[1] = $_SESSION['lang'] ?? null;
+
+
+$parts[2] = $parts[2] ?? null;
+$_SESSION['lang'];
+var_dump($parts);
+$ctrl = $parts[2] ? ucfirst($parts[2]) : 'Index';
 
 if (file_exists(__DIR__ . '\App\Controllers\\' . $ctrl . '.' . 'php')) {
     try {
