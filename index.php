@@ -12,15 +12,16 @@ $parts[1] = $_SESSION['lang'] ?? null;
 
 
 $parts[2] = $parts[2] ?? null;
-$lang = $_SESSION['lang'];
-var_dump($parts);
+$_SESSION['lang'];
+//var_dump($parts);
 $ctrl = $parts[2] ? ucfirst($parts[2]) : 'Index';
 
 if (file_exists(__DIR__ . '\App\Controllers\\' . $ctrl . '.' . 'php')) {
     try {
         $class = '\App\Controllers\\' . $ctrl;
-        $ctrl = new $class($lang);
+        $ctrl = new $class();
         $ctrl();
+        var_dump($ctrl);
 
         //$action = $parts[2] ?? 'dsd';
         //var_dump($action);
