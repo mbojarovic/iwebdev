@@ -21,10 +21,6 @@ abstract class Controller
         return true;
     }
 
-    protected function prepareUrl() {
-        return $this->lang;
-    }
-
     public function __invoke()
     {
         if ($this->access()) {

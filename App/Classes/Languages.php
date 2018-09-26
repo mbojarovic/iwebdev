@@ -17,21 +17,21 @@ abstract class Languages
 
     public static function multiLanguage()
     {
-        if (!isset($_SESSION['lang'])) {
+       /* if (!isset($_SESSION['lang'])) {
             $_SESSION['lang'] = 'en';
-        } elseif (isset($_GET['lang']) && $_SESSION['lang'] !=
-            $_GET['lang'] && !empty($_GET['lang'])) {
+        } elseif (isset($parts[1]) && $_SESSION['lang'] !=
+            $parts[1] && !empty($parts[1])) {
 
-            if ($_GET['lang'] == 'en') {
+            if ($parts[1] == 'en') {
+                var_dump($_SESSION['lang']);
                 $_SESSION['lang'] = 'en';
-            } elseif ($_GET['lang'] == 'ru') {
+            } elseif ($parts[1] == 'ru') {
                 $_SESSION['lang'] = 'ru';
             }
-        }
+        }*/
     }
 
     public static function getLanguage() {
         echo 'ku';
     }
-
 }

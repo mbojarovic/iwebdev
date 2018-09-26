@@ -1,5 +1,7 @@
 <?php
 
+use App\Classes\Languages;
+
 session_start();
 
 require __DIR__ . '/App/autoload.php';
@@ -8,27 +10,27 @@ $uri = $_SERVER['REQUEST_URI'];
 //var_dump($uri);
 $parts = explode('/', $uri);
 
+if (!isset($_SESSION['lang'])) {
+    $_SESSION['lang'] = 'en';
+} elseif (isset($parts[1]) && $_SESSION['lang'] !=
+    $parts[1] && !empty($parts[1])) {
 
-
-$parts[1] = $_SESSION['lang'] ?? null;
-if ($parts[1] == $_SESSION['lang']) {
-    //Languages::multiLanguage();
+    if ($parts[1] == 'en') {
+        $_SESSION['lang'] = 'en';
+    } elseif ($parts[1] == 'ru') {
+        $_SESSION['lang'] = 'ru';
+    }
 }
 
-$parts[2] = $parts[2] ?? null;
-//$lang = $_SESSION['lang'];
-//var_dump($parts);
-$ctrl = $parts[2] ? ucfirst($parts[2]) : 'Index';
+$parts[3] = $parts[3] ?? null;
+
+$ctrl = $parts[3] ? ucfirst($parts[3]) : 'Index';
 
 if (file_exists(__DIR__ . '\App\Controllers\\' . $ctrl . '.' . 'php')) {
     try {
         $class = '\App\Controllers\\' . $ctrl;
         $ctrl = new $class();
         $ctrl();
-
-        //$action = $parts[2] ?? 'dsd';
-        //var_dump($action);
-        //var_dump($parts);
 
     } catch (\App\DbException $error) {
         echo 'Ошибка в БД при выполнении запроса "' . $error->getQuery() . '": ' . $error->getMessage();

@@ -29,10 +29,4 @@ class Index extends Controller
         ];
         echo $this->view->render(__DIR__ . '/../../templates/pagination.php');
     }
-
-    public function lang($lang)
-    {
-        //var_dump($lang);
-        echo 'this is lang';
-    }
 }
