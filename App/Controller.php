@@ -8,16 +8,10 @@ abstract class Controller
 {
     protected $view;
     protected $langText;
-    protected $lang;
 
-    public function __construct($lang)
+    public function __construct()
     {
-        var_dump($lang);
-        if (!empty($lang)) {
-            $this->lang = $lang;
-            Languages::multiLanguage();
-            $this->langText = include_once __DIR__ . '/../languages/' . $_SESSION['lang'] . '.php';
-        }
+        $this->langText = include_once __DIR__ . '/../languages/' . $_SESSION['lang'] . '.php';
 
         $this->view = new View();
     }
@@ -27,7 +21,7 @@ abstract class Controller
         return true;
     }
 
-    protected function showLanguage() {
+    protected function prepareUrl() {
         return $this->lang;
     }
 

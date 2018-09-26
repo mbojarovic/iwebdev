@@ -8,18 +8,22 @@ $uri = $_SERVER['REQUEST_URI'];
 //var_dump($uri);
 $parts = explode('/', $uri);
 
-$parts[1] = $_SESSION['lang'] ?? null;
 
+
+$parts[1] = $_SESSION['lang'] ?? null;
+if ($parts[1] == $_SESSION['lang']) {
+    //Languages::multiLanguage();
+}
 
 $parts[2] = $parts[2] ?? null;
-$lang = $_SESSION['lang'];
-var_dump($parts);
+//$lang = $_SESSION['lang'];
+//var_dump($parts);
 $ctrl = $parts[2] ? ucfirst($parts[2]) : 'Index';
 
 if (file_exists(__DIR__ . '\App\Controllers\\' . $ctrl . '.' . 'php')) {
     try {
         $class = '\App\Controllers\\' . $ctrl;
-        $ctrl = new $class($lang);
+        $ctrl = new $class();
         $ctrl();
 
         //$action = $parts[2] ?? 'dsd';

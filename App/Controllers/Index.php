@@ -11,7 +11,7 @@ class Index extends Controller
 
     protected function handle()
     {
-        $this->view->langs = $this->langText;
+        //$this->view->langs = $this->langText;
 
         $pagination = new Pagination();
 

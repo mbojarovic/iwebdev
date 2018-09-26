@@ -13,6 +13,7 @@ abstract class Languages
 {
     public static $en;
     public static $ru;
+    public static $currentLanguage;
 
     public static function multiLanguage()
     {
@@ -28,4 +29,9 @@ abstract class Languages
             }
         }
     }
+
+    public static function getLanguage() {
+        echo 'ku';
+    }
+
 }
